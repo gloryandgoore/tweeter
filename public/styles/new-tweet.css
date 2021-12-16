@@ -1,0 +1,52 @@
+.tweet {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin: 30px 0px 30px 0px;
+}
+
+
+section div {
+  display: flex;
+  width: 100%;
+  font-family: 'Bungee', cursive;
+  justify-content: space-between;
+  align-items:center;
+}
+
+form {
+  width: 100%;
+}
+
+
+output.counter {
+  display:flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  flex: 1;
+  justify-content: space-between;
+  float: right;
+}
+
+#tweet-text  {
+  display: flex;
+  color: rgb(102, 101, 101);
+  font-weight: bold;
+  font-size:80%;
+  width: 100%;
+  background-color: transparent;
+  column-count: 2;
+  border: 0px;
+  border-bottom: 3px solid rgb(78, 78, 78);
+  line-height: 0.75em;
+  resize: none;
+  margin-bottom: 1em;
+  outline:black;
+  
+}
+
+button {
+background-color: #f13c1f;
+color: white;
+}
