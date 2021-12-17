@@ -50,3 +50,12 @@ button {
 background-color: #f13c1f;
 color: white;
 }
+
+.alert {
+  padding: 20px;
+  background-color: transparent;
+  border: 5px solid #f13c1f;
+  color: #f13c1f;
+  margin-bottom: 20px;
+  display: none;
+}

@@ -3,6 +3,7 @@
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 
     <!-- External CSS -->
     <link
@@ -78,6 +79,9 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="tweet">
+        <div class="alert">
+          <span class="message"></span>
+        </div>
         <h2></h2>
         <form action="/tweets/" method="POST">
           <label for="tweet-text"></label>

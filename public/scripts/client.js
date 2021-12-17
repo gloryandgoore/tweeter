@@ -3,30 +3,17 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
+  const esc = function(str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
 const data = [
-  // {
-  //   user: {
-  //     name: "Newton",
-  //     avatars: "https://i.imgur.com/73hZDYK.png",
-  //     handle: "@SirIsaac",
-  //   },
-  //   content: {
-  //     text: "If I have seen further it is by standing on the shoulders of giants",
-  //   },
-  //   created_at: 1461116232227,
-  // },
-  // {
-  //   user: {
-  //     name: "Descartes",
-  //     avatars: "https://i.imgur.com/nlhLi3I.png",
-  //     handle: "@rd",
-  //   },
-  //   content: {
-  //     text: "Je pense , donc je suis",
-  //   },
-  //   created_at: 1461113959088,
-  // },
 ];
+
+
 
 const renderTweets = function (tweets) {
   // loops through tweets
@@ -50,7 +37,7 @@ const createTweetElement = function (tweet) {
           </div>
           <div class="tweeterHandle">${tweet.user.handle}</div>
         </header>
-        <p>${tweet.content.text}</p>
+        <p>${esc(tweet.content.text)}</p>
         <footer>
           <div>${time}</div>
           <div class="socials">
@@ -72,23 +59,31 @@ $("form").on("submit", function (e){
 
   const data = $('#tweet-text').val();
    if (data.trim() === "") {
-    console.log(alert("Error, field cannot be blank!"));
+    $(".message").html("⛔️ Error, field cannot be blank! ⛔️");
+    $('.alert').slideDown()
     //  return "Error, field cannot be blank!";
    } else if (data.length > 140) {
-    console.log(alert("Character limit exceeded"));
+    $(".message").html("⛔️ Character limit exceeded ⛔️");
+    $('.alert').slideDown()
     //  return "Character limit exceeded";
    } else {
      const tweetUrl = '/tweets/';
+     $(".message").html('');
+     $('.alert').slideUp();
      $.ajax({
        method: 'POST',
        url: tweetUrl,
        data:  $(this).serialize(),
-       success(data){
-          console.log('success');
-       }
-     });
-   }
-});
+       success: function(data){
+          console.log(data);
+        }
+      })
+        .then(loadTweets());
+         $('.counter').val('140');
+         $('#tweet-text').val('');
+     }
+   })
+
 
 const loadTweets = function () {
   $.ajax({
@@ -104,3 +99,5 @@ const loadTweets = function () {
   })
 }
 loadTweets()
+
+
